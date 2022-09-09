@@ -14,6 +14,8 @@ body {
   background-image: url('/images/dark-bg-tile.jpg');
 }
 
+
+
 * {
   box-sizing: border-box;
 }
@@ -22,6 +24,7 @@ h1,h2,h3,h4,h5,h6 {
   font-family: "Russo One", sans-serif;
   letter-spacing: .15rem;
   color: var(--primary-header-color);
+  margin: 0;
 }
 
 p {
@@ -37,4 +40,12 @@ p {
 
 .heading-small {
   font-size: 1.25rem;
+}
+
+.cmsHTMLContentContainer {
+  overflow: hidden;
+}
+.cmsHTMLContentContainer img {
+  width: 100%;
+  height: auto;
 }

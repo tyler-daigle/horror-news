@@ -1,24 +1,21 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import MainContainer from "../components/MainContainer";
+import ArticleList from "../components/ArticleList";
+import Head from "next/head";
 
 export default function Home({ articles }) {
   return (
     <div>
-      <ul>
-        {articles.map((article) => (
-          <li>
-            <Link href={`/posts/${article.articleSlug}`}>
-              <a>{article.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <Link href="/blog">
-        <a>Blog</a>
-      </Link>
+      <Head>
+        <title>SITE1031 - HORROR - MOVIES - MUSIC</title>
+      </Head>
+      
+      <h1>SITE1031</h1>
+      <main>
+        <MainContainer>
+          <ArticleList articles={articles} />          
+        </MainContainer>
+      </main>
     </div>
   );
 }
@@ -26,15 +23,18 @@ export default function Home({ articles }) {
 export async function getStaticProps(context) {
   const client = new ApolloClient({
     uri: "https://api-us-east-1.hygraph.com/v2/cl7st3lhy03by01uu0yy3b3xw/master",
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache()
   });
 
   const { data } = await client.query({
     query: gql`
-      query GetSlug {
+      query GetArticles {
         articles {
           title
-          articleSlug
+          date
+          articleContent {
+            html
+          }
         }
       }
     `,
