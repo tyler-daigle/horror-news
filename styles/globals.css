@@ -1,6 +1,6 @@
 :root {
   --primary-text-color: #d9d9d9;
-  --primary-header-color: #C01919;
+  --primary-header-color: #c01919;
 }
 
 html,
@@ -11,15 +11,13 @@ body {
   font-size: 16px;
   color: var(--primary-text-color);
   background-color: black;
-  background-image: url('/images/dark-bg-tile.jpg');
+  background-image: url("/images/dark-bg-tile.jpg");
 }
-
-
 
 * {
   box-sizing: border-box;
 }
-
+/* 
 h1,h2,h3,h4,h5,h6 {
   font-family: "Russo One", sans-serif;
   letter-spacing: .15rem;
@@ -48,4 +46,4 @@ p {
 .cmsHTMLContentContainer img {
   width: 100%;
   height: auto;
-}
+} */

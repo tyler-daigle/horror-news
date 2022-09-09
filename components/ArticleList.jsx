@@ -1,10 +1,13 @@
 import ArticleItem from "./ArticleItem";
 import styles from "@/styles/ArticleList.module.css";
+import { Stack } from "@mantine/core";
 
-export default function ArticleList({articles}) {
+export default function ArticleList({ articles }) {
   return (
-    <ul className={styles.articleList}>
-      {articles.map(article => <ArticleItem article={article} />)}
-    </ul>
-  )
+    <Stack>
+      {articles.map((article) => (
+        <ArticleItem key={article.id} article={article} />
+      ))}
+    </Stack>
+  );
 }
