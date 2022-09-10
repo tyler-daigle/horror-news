@@ -1,13 +1,26 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import MainContainer from "../components/MainContainer";
-import ArticleList from "../components/ArticleList";
 import Head from "next/head";
 import Layout from "@/components/base/Layout";
+import Tweets from "@/components/Tweets";
+import Blogs from "@/components/Blogs";
+import YouTubeLinks from "@/components/YouTubeLinks";
 
-export default function Home({ articles }) {
+export default function Home({ newsEntries }) {
   return (
     <Layout pageTitle={"SITE1031 - HORROR - MOVIES - MUSIC"}>
-      <ArticleList articles={articles} />
+      {/* <ArticleList articles={articles} /> */}
+      <h2>Working on it...</h2>
+      <p>{newsEntries.length}</p>
+      {newsEntries.map((entry) => (
+        <>
+          {entry.blogs && <Blogs blogs={entry.blogs} />}
+          {entry.tweets && <Tweets tweets={entry.tweets} />}
+          {entry.youTubeLinks && (
+            <YouTubeLinks youTubeLinks={entry.youTubeLinks} />
+          )}
+        </>
+      ))}
     </Layout>
     // <div>
     //   <Head>
@@ -30,24 +43,47 @@ export async function getStaticProps(context) {
     cache: new InMemoryCache(),
   });
 
+  // const { data } = await client.query({
+  //   query: gql`
+  //     query GetArticles {
+  //       articles {
+  //         id
+  //         title
+  //         date
+  //         articleContent {
+  //           html
+  //         }
+  //       }
+  //     }
+  //   `,
+  // });
+
   const { data } = await client.query({
     query: gql`
-      query GetArticles {
-        articles {
+      query GetNewsEntries {
+        newsEntries(orderBy: date_DESC) {
           id
-          title
           date
-          articleContent {
-            html
+          tweets {
+            tweetEmbedCode
+          }
+          youTubeLinks {
+            videoId
+          }
+          blogs {
+            title
+            blogSummary
+            blogContent {
+              html
+            }
           }
         }
       }
     `,
   });
-
   return {
     props: {
-      articles: data.articles,
+      newsEntries: data.newsEntries,
     },
   };
 }
