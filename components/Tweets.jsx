@@ -8,7 +8,7 @@ export default function Tweets({ tweets }) {
     <Container>
       <Title
         order={2}
-        color="red"
+        color="red.6"
         onClick={() => setTweetsOpen(!tweetsOpen)}
         style={{ cursor: "pointer" }}
       >

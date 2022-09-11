@@ -12,8 +12,8 @@ export default function Home({ newsEntries }) {
   return (
     <Layout pageTitle={"SITE1031 - HORROR - MOVIES - MUSIC"}>
       {newsEntries.map((entry) => (
-        <Container width="100%">
-          <Title order={2} color="red">
+        <Container width="100%" my="lg">
+          <Title order={2} color="red.6">
             📅 {entry.date}
           </Title>
           {entry.blogs && <Blogs blogs={entry.blogs} />}
