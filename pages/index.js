@@ -7,15 +7,15 @@ import Blogs from "@/components/Blogs";
 import YouTubeLinks from "@/components/YouTubeLinks";
 import NewsItems from "@/components/NewsItems";
 import { Title, Stack, Container } from "@mantine/core";
-
+import FancyTitle from "@/components/base/FancyTitle";
 export default function Home({ newsEntries }) {
   return (
     <Layout pageTitle={"SITE1031 - HORROR - MOVIES - MUSIC"}>
       {newsEntries.map((entry) => (
         <Container width="100%" my="lg">
-          <Title order={2} color="red.6">
+          <FancyTitle order={2} color="red.6">
             📅 {entry.date}
-          </Title>
+          </FancyTitle>
           {entry.blogs && <Blogs blogs={entry.blogs} />}
           {entry.tweets && <Tweets tweets={entry.tweets} />}
           {entry.youTubeLinks && (

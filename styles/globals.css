@@ -17,14 +17,19 @@ body {
 * {
   box-sizing: border-box;
 }
-/* 
-h1,h2,h3,h4,h5,h6 {
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Russo One", sans-serif;
-  letter-spacing: .15rem;
+
   color: var(--primary-header-color);
   margin: 0;
-}
-
+} */
+/*
 p {
   line-height: 1.35rem;
 }

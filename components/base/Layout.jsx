@@ -21,13 +21,12 @@ export default function Layout({ children, pageTitle }) {
         header={
           <Header height={60} p="sm">
             <Group position="apart">
-              <Title order={1} color="red">
+              <Title order={1} color="red.6">
                 Site1031
               </Title>
               <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-                <Text>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Soluta, nisi!
+                <Text color="cyan.6" size="lg" weight={700}>
+                  Your Source For Daily Horror News
                 </Text>
               </MediaQuery>
             </Group>
