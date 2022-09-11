@@ -5,35 +5,26 @@ import Layout from "@/components/base/Layout";
 import Tweets from "@/components/Tweets";
 import Blogs from "@/components/Blogs";
 import YouTubeLinks from "@/components/YouTubeLinks";
+import NewsItems from "@/components/NewsItems";
+import { Title, Stack, Container } from "@mantine/core";
 
 export default function Home({ newsEntries }) {
   return (
     <Layout pageTitle={"SITE1031 - HORROR - MOVIES - MUSIC"}>
-      {/* <ArticleList articles={articles} /> */}
-      <h2>Working on it...</h2>
-      <p>{newsEntries.length}</p>
       {newsEntries.map((entry) => (
-        <>
+        <Container width="100%">
+          <Title order={2} color="red">
+            📅 {entry.date}
+          </Title>
           {entry.blogs && <Blogs blogs={entry.blogs} />}
           {entry.tweets && <Tweets tweets={entry.tweets} />}
           {entry.youTubeLinks && (
             <YouTubeLinks youTubeLinks={entry.youTubeLinks} />
           )}
-        </>
+          {entry.newsItemLinks && <NewsItems newsItems={entry.newsItemLinks} />}
+        </Container>
       ))}
     </Layout>
-    // <div>
-    //   <Head>
-    //     <title>SITE1031 - HORROR - MOVIES - MUSIC</title>
-    //   </Head>
-
-    //   <h1>SITE1031</h1>
-    //   <main>
-    //     <MainContainer>
-    //       <ArticleList articles={articles} />
-    //     </MainContainer>
-    //   </main>
-    // </div>
   );
 }
 
@@ -66,16 +57,25 @@ export async function getStaticProps(context) {
           date
           tweets {
             tweetEmbedCode
+            id
           }
           youTubeLinks {
+            id
             videoId
           }
           blogs {
+            id
             title
             blogSummary
             blogContent {
               html
             }
+          }
+          newsItemLinks {
+            newsItemSummary
+            newsItemUrl
+            title
+            id
           }
         }
       }
