@@ -1,15 +1,30 @@
-import { Collapse, Button, Paper, Title, Box } from "@mantine/core";
+import { Collapse, Button, Paper, Group, Center } from "@mantine/core";
 import Container from "./base/Container";
 import { useState } from "react";
+import FancyTitle from "./base/FancyTitle";
+import Image from "next/image";
+
 export default function Blogs({ blogs }) {
   const [blogOpen, setBlogOpen] = useState(false);
 
   return (
     <Container>
       <Paper shadow="sm" p="lg" radius={5}>
-        <Title order={2} color="red.6">
-          {blogs.title}
-        </Title>
+        <Group position="center">
+          {blogs.blogHeaderImage && (
+            <Image
+              style={{ borderRadius: "15px" }}
+              src={blogs.blogHeaderImage.url}
+              height={400}
+              width={700}
+              alt={blogs.headerImageAltText}
+              objectFit="contain"
+            />
+          )}
+          <FancyTitle order={2} color="red.6">
+            {blogs.title}
+          </FancyTitle>
+        </Group>
 
         <p style={{ width: "100%" }}>{blogs.blogSummary}</p>
 

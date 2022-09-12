@@ -17,11 +17,11 @@ export default function Home({ newsEntries }) {
             📅 {entry.date}
           </FancyTitle>
           {entry.blogs && <Blogs blogs={entry.blogs} />}
+          {entry.newsItemLinks && <NewsItems newsItems={entry.newsItemLinks} />}
           {entry.tweets && <Tweets tweets={entry.tweets} />}
           {entry.youTubeLinks && (
             <YouTubeLinks youTubeLinks={entry.youTubeLinks} />
           )}
-          {entry.newsItemLinks && <NewsItems newsItems={entry.newsItemLinks} />}
         </Container>
       ))}
     </Layout>
@@ -65,6 +65,10 @@ export async function getStaticProps(context) {
           }
           blogs {
             id
+            headerImageAltText
+            blogHeaderImage {
+              url
+            }
             title
             blogSummary
             blogContent {
