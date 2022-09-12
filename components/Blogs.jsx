@@ -13,7 +13,6 @@ export default function Blogs({ blogs }) {
         <Group position="center">
           {blogs.blogHeaderImage && (
             <Image
-              style={{ borderRadius: "15px" }}
               src={blogs.blogHeaderImage.url}
               height={400}
               width={700}

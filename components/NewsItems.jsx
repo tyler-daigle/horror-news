@@ -1,21 +1,48 @@
-import { Stack, Card, Text, Button, Title, SimpleGrid } from "@mantine/core";
-import Image from "next/image";
+import {
+  Stack,
+  Card,
+  Text,
+  Button,
+  Title,
+  SimpleGrid,
+  Group,
+} from "@mantine/core";
+
 import Link from "next/link";
-import newsHeaderImage from "../public/images/news-header.jpg";
+
 import FancyTitle from "./base/FancyTitle";
 import Container from "@/components/base/Container";
+import Image from "next/image";
+import newsSvg from "../public/images/news.svg";
 
 export default function NewsItems({ newsItems }) {
   return (
     <Container>
-      <FancyTitle order={2} color="red.6">
-        News Of The Day
-      </FancyTitle>
+      <Group>
+        <Image src={newsSvg} alt="News Item Icon" />
+        <FancyTitle order={2} color="red.6">
+          News Of The Day
+        </FancyTitle>
+      </Group>
       <SimpleGrid mt="lg" cols={2} breakpoints={[{ maxWidth: 600, cols: 1 }]}>
         {newsItems.map((item) => (
           <Card withBorder radius="md" shadow="md" sx={{ width: "100%" }}>
             <Card.Section>
-              <Image src={newsHeaderImage} height={300} objectFit="cover" />
+              {item.newsItemImage ? (
+                <img
+                  src={item.newsItemImage.url}
+                  width="100%"
+                  height="150"
+                  style={{ objectFit: "cover" }}
+                />
+              ) : (
+                <img
+                  src="/images/news-header.jpg"
+                  width="100%"
+                  height="150"
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </Card.Section>
             <Stack justify="space-between">
               <FancyTitle order={3} color="cyan.6">
