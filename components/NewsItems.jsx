@@ -6,6 +6,7 @@ import FancyTitle from "./base/FancyTitle";
 import Container from "@/components/base/Container";
 import Image from "next/image";
 import newsSvg from "../public/images/news.svg";
+import styles from "@/styles/NewsItems.module.css";
 
 export default function NewsItems({ newsItems }) {
   return (
@@ -25,26 +26,28 @@ export default function NewsItems({ newsItems }) {
             shadow="md"
             sx={{ width: "100%" }}
           >
-            <Card.Section>
+            <Card.Section sx={{ position: "relative", height: "120px" }}>
               {item.newsItemImage ? (
-                <img
+                <Image
                   alt="News Item Header Image"
                   src={item.newsItemImage.url}
-                  width="100%"
-                  height="150"
-                  style={{
-                    objectFit: `${
-                      item.setObjectFitContain ? "contain" : "cover"
-                    }`,
-                  }}
+                  layout="fill"
+                  height={150}
+                  // style={{
+                  //   objectFit: `${
+                  //     item.setObjectFitContain ? "contain" : "cover"
+                  //   }`,
+                  // }}
+                  className={styles.newsHeaderImageContain}
                 />
               ) : (
-                <img
+                <Image
                   alt="News Item Header Image"
                   src="/images/news-header.jpg"
-                  width="100%"
-                  height="150"
-                  style={{ objectFit: "cover" }}
+                  layout="fill"
+                  height={150}
+                  // style={{ objectFit: "cover" }}
+                  className={styles.newsHeaderImageCover}
                 />
               )}
             </Card.Section>
