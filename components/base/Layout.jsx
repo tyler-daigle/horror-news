@@ -9,7 +9,12 @@ import {
 import FancyTitle from "./FancyTitle";
 import Head from "next/head";
 
-export default function Layout({ children, pageTitle }) {
+export default function Layout({
+  children,
+  pageTitle,
+  siteName,
+  siteHeadline,
+}) {
   return (
     <>
       <Head>
@@ -20,13 +25,13 @@ export default function Layout({ children, pageTitle }) {
         padding="sm"
         header={
           <Header height={60} p="sm">
-            <Group position="apart">
-              <FancyTitle order={1} color="red.6">
-                Site1031
+            <Group align="center" position="apart">
+              <FancyTitle order={1} color="red.6" ml="lg">
+                {siteName}
               </FancyTitle>
               <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-                <Text color="cyan.6" size="lg" weight={700}>
-                  Your Source For Daily Horror News
+                <Text color="cyan.6" size="lg" weight={700} mr="lg">
+                  {siteHeadline}
                 </Text>
               </MediaQuery>
             </Group>

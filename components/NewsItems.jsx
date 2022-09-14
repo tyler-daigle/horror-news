@@ -33,7 +33,11 @@ export default function NewsItems({ newsItems }) {
                   src={item.newsItemImage.url}
                   width="100%"
                   height="150"
-                  style={{ objectFit: "cover" }}
+                  style={{
+                    objectFit: `${
+                      item.setObjectFitContain ? "contain" : "cover"
+                    }`,
+                  }}
                 />
               ) : (
                 <img

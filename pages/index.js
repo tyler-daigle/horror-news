@@ -11,9 +11,13 @@ import FancyTitle from "@/components/base/FancyTitle";
 import Image from "next/image";
 import calendarSVG from "../public/images/calendar.svg";
 
-export default function Home({ newsEntries }) {
+export default function Home({ newsEntries, siteName, siteHeadline }) {
   return (
-    <Layout pageTitle={"SITE1031 - HORROR - MOVIES - MUSIC"}>
+    <Layout
+      pageTitle={`${siteName} - ${siteHeadline}`}
+      siteName={siteName}
+      siteHeadline={siteHeadline}
+    >
       {newsEntries.map((entry) => (
         <Container width="100%" my="lg">
           <Group>
@@ -77,10 +81,15 @@ export async function getStaticProps(context) {
             newsItemUrl
             title
             id
+            setObjectFitContain
             newsItemImage {
               url
             }
           }
+        }
+        siteInfos {
+          siteHeadline
+          siteName
         }
       }
     `,
@@ -88,6 +97,8 @@ export async function getStaticProps(context) {
   return {
     props: {
       newsEntries: data.newsEntries,
+      siteName: data.siteInfos[0].siteName,
+      siteHeadline: data.siteInfos[0].siteHeadline,
     },
   };
 }
