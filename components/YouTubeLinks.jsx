@@ -16,6 +16,7 @@ export default function YouTubeLinks({ youTubeLinks }) {
       <SimpleGrid mt="lg" cols={2} breakpoints={[{ maxWidth: 600, cols: 1 }]}>
         {youTubeLinks.videoId.map((videoId) => (
           <Box
+            key={videoId}
             sx={(theme) => ({
               backgroundColor: theme.colors.dark[8],
               borderRadius: "5px",
@@ -27,9 +28,9 @@ export default function YouTubeLinks({ youTubeLinks }) {
                 style={{ width: "100%", aspectRatio: "16/9" }}
                 src={`https://www.youtube.com/embed/${videoId}`}
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             </Container>
           </Box>

@@ -1,12 +1,4 @@
-import {
-  Stack,
-  Card,
-  Text,
-  Button,
-  Title,
-  SimpleGrid,
-  Group,
-} from "@mantine/core";
+import { Stack, Card, Text, Button, SimpleGrid, Group } from "@mantine/core";
 
 import Link from "next/link";
 
@@ -26,10 +18,17 @@ export default function NewsItems({ newsItems }) {
       </Group>
       <SimpleGrid mt="lg" cols={2} breakpoints={[{ maxWidth: 600, cols: 1 }]}>
         {newsItems.map((item) => (
-          <Card withBorder radius="md" shadow="md" sx={{ width: "100%" }}>
+          <Card
+            key={item.id}
+            withBorder
+            radius="md"
+            shadow="md"
+            sx={{ width: "100%" }}
+          >
             <Card.Section>
               {item.newsItemImage ? (
                 <img
+                  alt="News Item Header Image"
                   src={item.newsItemImage.url}
                   width="100%"
                   height="150"
@@ -41,6 +40,7 @@ export default function NewsItems({ newsItems }) {
                 />
               ) : (
                 <img
+                  alt="News Item Header Image"
                   src="/images/news-header.jpg"
                   width="100%"
                   height="150"

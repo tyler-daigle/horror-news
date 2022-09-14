@@ -1,12 +1,11 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import MainContainer from "../components/MainContainer";
-import Head from "next/head";
+
 import Layout from "@/components/base/Layout";
 import Tweets from "@/components/Tweets";
 import Blogs from "@/components/Blogs";
 import YouTubeLinks from "@/components/YouTubeLinks";
 import NewsItems from "@/components/NewsItems";
-import { Title, Stack, Group, Container } from "@mantine/core";
+import { Group, Container } from "@mantine/core";
 import FancyTitle from "@/components/base/FancyTitle";
 import Image from "next/image";
 import calendarSVG from "../public/images/calendar.svg";
@@ -19,7 +18,7 @@ export default function Home({ newsEntries, siteName, siteHeadline }) {
       siteHeadline={siteHeadline}
     >
       {newsEntries.map((entry) => (
-        <Container width="100%" my="lg">
+        <Container key={entry.id} width="100%" my="lg">
           <Group>
             <Image
               className="calendar-svg"

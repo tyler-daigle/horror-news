@@ -34,7 +34,10 @@ export default function Tweets({ tweets }) {
             breakpoints={[{ maxWidth: 600, cols: 1 }]}
           >
             {tweets.tweetEmbedCode.map((tweetCode) => (
-              <div dangerouslySetInnerHTML={{ __html: tweetCode }}></div>
+              <div
+                key={tweetCode.slice(55, 70)}
+                dangerouslySetInnerHTML={{ __html: tweetCode }}
+              ></div>
             ))}
           </SimpleGrid>
         </Collapse>
